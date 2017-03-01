@@ -5,7 +5,6 @@
     padding:  20px;
     margin:10px;
     border-radius: 8px;
-    border: 8px solid #cfcfcf
 }
 .OT_widget-container{
     background-color: #cfcfcf;
@@ -30,12 +29,13 @@ body {
     color: red;
     z-index: 2000;
     cursor: pointer;
-    border: 2px solid #706e6e;
     position: absolute;;
     cursor:pointer;
     z-index: 20000;
-    background-color: #a19c9c;
     opacity: .9;
+    margin: 4px;
+    background-color: rgba(255, 255, 255, 0.22);
+    border-radius: 4px;
 }
 .minimize{
     background-image: url('https://cdn-img.easyicon.net/png/10748/1074803.gif') !important;
