@@ -1,0 +1,12 @@
+<md-card class="Publish" >
+    <md-toolbar class="publishButton">
+        <button md-raised-button color="accent" (click)="publisherInit();" [disabled]="!(publishStatus ==1||publishStatus ==3)" >Publish</button> &nbsp;
+        <button md-raised-button color="accent" (click)="stopPublishing();" disabled="" [disabled]="(publishStatus ==1||publishStatus ==3 || publishStatus ==0  )">Pause</button>
+    </md-toolbar>
+    <div id="publisherHolder">
+        <div id="myPublisherDiv">
+        </div>    
+    </div>
+    <span class="app-toolbar-filler"></span>
+    
+</md-card>
