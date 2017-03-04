@@ -9,7 +9,7 @@ import { CanActivate }    from '@angular/router';
 })
 export class AppComponent {
     constructor(public http:Http, public router: Router) {
-       this.CanActivate();
+      // this.CanActivate();
     }
     opensite() {
          window.location.href="https://www.fitnesspax.com/login";

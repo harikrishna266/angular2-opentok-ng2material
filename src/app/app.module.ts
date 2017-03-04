@@ -9,12 +9,14 @@ import { AppComponent } from './app.component';
 import {OpentokService,PublisherService} from './providers/providers';
 import {PublishComponent,HomeComponent} from './pages/pages';
 import { PricingComponent } from './component/pricing/pricing.component';
+import { TrainervideoComponent } from './pages/trainervideo/trainervideo.component';
 
 
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'publish',      component: PublishComponent },
+  { path: 'trainer/:id',      component: TrainervideoComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: '**', component: HomeComponent }
 ];
@@ -26,6 +28,7 @@ const appRoutes: Routes = [
     PublishComponent,
     HomeComponent,
     PricingComponent,
+    TrainervideoComponent,
   ],
   imports: [
     BrowserModule,

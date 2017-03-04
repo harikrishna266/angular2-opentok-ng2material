@@ -25,6 +25,7 @@ export class HomeComponent {
     ngAfterViewInit() {
         
        this.initSession();
+       this.ngOnDestroy();
        //this.CanActivate();
     }
     CanActivate() {
@@ -117,11 +118,6 @@ export class HomeComponent {
                 document.getElementById('allStreams').innerHTML = '<div id="layout"></div>';
             this.videoSubscriber = this.session.subscribe(stream.stream, 'layout', subscriberProperties);
     }
-    view(e, stream) {
-        this.session.currentStream = stream;
-        this.router.navigate(['/room', stream.streamId]);
-    }
-    
     ngOnDestroy() {
         this.session.off('streamCreated');
         this.session.off('sessionConnected'); 
