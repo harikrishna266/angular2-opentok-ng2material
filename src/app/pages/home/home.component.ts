@@ -57,9 +57,22 @@ export class HomeComponent {
         this.session = OT.initSession(this.apiKey, this.openTokSessionId);
         this.session.connect(this.tokenId, (e) => this.tryingToConnect(e));
     }
+    disconnectConnect(e) {
+        console.log(e);
+    }
     
     tryingToConnect(e) {
         this.session.on('streamCreated',(e) => this.streamCreated(e));
+        this.session.on('streamDestroyed',(e) => this.streamDestroyed(e));
+    }
+    streamDestroyed(e){
+        let number;
+        for(let i=0;i<this.streamArray.length;i++) {
+            if(this.streamArray[i].stream.id == e.stream.id) {
+                number = i;
+            }
+        }
+        this.streamArray.splice(number,1);
     }
     streamCreated(stream) {
         this.streamArray.push(stream);
