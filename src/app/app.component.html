@@ -1,9 +1,7 @@
 <md-sidenav-container fullscreen >
-  <md-toolbar color="white">
-    FitnessSpaxx
+  <md-toolbar color="white" >
+        <a (click)="opensite();" class=logo>Fitnesspax</a>
     <span class="app-toolbar-filler"></span>
-    <button md-button  routerLink="/publish">Publish</button>
-    <button md-button  routerLink="/home">home</button>
   </md-toolbar>
     <div class="app-content">
          <router-outlet></router-outlet>

@@ -5,3 +5,16 @@
     <!-- <div id="bigvideoholder">
     </div> -->
 </div>
+<md-grid-list id="bigvideoholder" cols="3" rowHeight="240">
+    <md-grid-tile class="streamholder"  *ngFor="let item of streamArray">
+        <div [id]="item.stream.id"></div>
+        <md-grid-tile-footer style="background: none">
+          <h3 md-line></h3>
+          <span md-line></span>
+          <button md-icon-button (click)="bigScreen(item.stream)">
+            <i class="material-icons">launch</i>
+          </button>
+        </md-grid-tile-footer>
+
+    </md-grid-tile>
+</md-grid-list>

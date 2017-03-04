@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 
 import {OpentokService,PublisherService} from './providers/providers';
 import {PublishComponent,HomeComponent} from './pages/pages';
-import { RoomComponent } from './pages/room/room.component';
+import { PricingComponent } from './component/pricing/pricing.component';
+
+
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,15 +25,16 @@ const appRoutes: Routes = [
     AppComponent,
     PublishComponent,
     HomeComponent,
-    RoomComponent
+    PricingComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MaterialModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,{ useHash: true })
   ],
+  entryComponents:[PricingComponent],
   providers: [OpentokService,PublisherService],
   bootstrap: [AppComponent]
 })

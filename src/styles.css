@@ -1,30 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';
-.OT_root{
-    float: left;
-    padding:  20px;
-    margin:10px;
-    border-radius: 8px;
-}
-.OT_widget-container{
-    background-color: #cfcfcf;
-    left: 0px;
-    top: 0px;
-}
-body {
-  margin: 0;
-}
 
-.app-toolbar-filler {
-  flex: 1 1 auto;
+.mat-grid-tile-footer{
+    backgroud: none !important;
 }
-.enlage{
-    background-image: url('http://classwithapps.com/wp-content/uploads/2013/02/full_screen.png');
+#bigvideo{
+    position: absolute;
+    top: 0px;
+    z-index: 11;
+}
+.closeBigVideo{
+    background-image: url('https://cdn-img.easyicon.net/png/10748/1074803.gif');
     background-size: cover;
     width: 25px;
     height: 25px;
     left: 1px;
-    position: absolute;
     bottom: 2px;
     color: red;
     z-index: 2000;
@@ -36,20 +26,4 @@ body {
     margin: 4px;
     background-color: rgba(255, 255, 255, 0.22);
     border-radius: 4px;
-}
-.minimize{
-    background-image: url('https://cdn-img.easyicon.net/png/10748/1074803.gif') !important;
-}
-#bigvideo{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0px;
-    z-index: 3000;
-    top: 0px;
-}
-#bigvideo .OT_root{
-    position: absolute;
-    left: 0px;
-    top:0px;
 }

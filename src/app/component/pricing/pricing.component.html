@@ -1,0 +1,15 @@
+<md-grid-list cols="3">
+  <md-grid-tile>
+      &nbsp;<button md-raised-button color="accent" (click)="close()" [disabled]="paid" (click)="broadCast('Free')">Free</button> 
+  </md-grid-tile>
+  <md-grid-tile>
+      &nbsp;<button md-raised-button (click)="paid=!paid;"  >Charge</button> 
+  </md-grid-tile>
+  <md-grid-tile>
+      <md-input-container *ngIf="paid">
+          &nbsp;<input mdInput type="number" placeholder="$/hour" [(ngModel)]="description" value="">
+        </md-input-container>
+    </md-grid-tile>
+</md-grid-list>
+
+<button md-raised-button  *ngIf="paid" color="accent" (click)="close()"  >Boardcast</button> 

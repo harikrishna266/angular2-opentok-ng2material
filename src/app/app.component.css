@@ -4,3 +4,6 @@ md-toolbar{
 	    background: #fff;
 	    color: #838180;
 }
+.logo{
+    cursor: pointer;
+}

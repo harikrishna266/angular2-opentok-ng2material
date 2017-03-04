@@ -1,7 +1,18 @@
 <md-card class="Publish" >
     <md-toolbar class="publishButton">
+        <md-input-container>
+            <input mdInput placeholder="Title" [(ngModel)]="title" value="">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="description" [(ngModel)]="description" value="">
+        </md-input-container>
+        &nbsp;&nbsp;
         <button md-raised-button color="accent" (click)="publisherInit();" [disabled]="!(publishStatus ==1||publishStatus ==3)" >Publish</button> &nbsp;
-        <button md-raised-button color="accent" (click)="stopPublishing();" disabled="" [disabled]="(publishStatus ==1||publishStatus ==3 || publishStatus ==0  )">Pause</button>
+        <button md-raised-button color="accent" (click)="stopPublishing();" disabled="" [disabled]="(publishStatus ==1||publishStatus ==3 || publishStatus ==0  )">Stop</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="material-icons">visibility</i>{{count}}
+
+        
     </md-toolbar>
     <div id="publisherHolder">
         <div id="myPublisherDiv">
