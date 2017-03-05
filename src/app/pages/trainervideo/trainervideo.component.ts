@@ -17,6 +17,8 @@ export class TrainervideoComponent implements OnInit {
     public openTokSessionId:string   = '1_MX40NTc4Mjg2Mn5-MTQ4ODI2NDI0MzM1Mn5iWFJrUjFPVFlpbzVjSm9scnRVbE4yWFN-fg';
     public tokenId:string            = 'T1==cGFydG5lcl9pZD00NTc4Mjg2MiZzaWc9OTEyNDAwNDkyMzIxODZmNjJjNjZlMmJjNmQ0NGZjNDYxYWY2ZjJmOTpzZXNzaW9uX2lkPTFfTVg0ME5UYzRNamcyTW41LU1UUTRPREkyTkRJME16TTFNbjVpV0ZKclVqRlBWRmxwYnpWalNtOXNjblJWYkU0eVdGTi1mZyZjcmVhdGVfdGltZT0xNDg4MjY0MjcyJm5vbmNlPTAuNjI2ODM2NDgwOTQzMzcyNCZyb2xlPW1vZGVyYXRvciZleHBpcmVfdGltZT0xNDkwODU2Mjcx';
     public apiKey: string            = '45782862';
+    public liveStream:any;
+    public laregerVideo:any;
     constructor(private route: ActivatedRoute) { }
 
     ngOnInit() {
@@ -39,6 +41,8 @@ export class TrainervideoComponent implements OnInit {
     }
     streamCreated(stream) {
         if(stream.stream.id == this.streamid) {
+            console.log('in');
+            this.liveStream = stream;
             this.session.signal({
             data:"joined",
             to: stream.connection,
@@ -49,6 +53,25 @@ export class TrainervideoComponent implements OnInit {
                 document.getElementById('smallvideoHolder').innerHTML = '<div id="smallvideo"></div>';
                 this.session.subscribe(stream.stream, 'smallvideo', subscriberProperties);
        }
+    }
+    bigScreen() {
+        let subscriberProperties = {insertMode: 'append',width: window.innerWidth, height: window.innerHeight};
+        document.getElementById('bigvideoholderBig').innerHTML = '<div id="bigvideo"></div><div class="closeBigVideo" ></div>';
+        this.laregerVideo = this.session.subscribe(this.liveStream.stream, 'bigvideo', subscriberProperties);
+        let closebutton = document.getElementsByClassName('closeBigVideo')[0].addEventListener('click',(e)=>this.addCloseButton() );
+    }
+    addCloseButton(){
+        this.session.signal({
+            data:"removed",
+            to: this.liveStream.connection,
+          },(error) => {
+              console.log(error);
+          })
+        this.laregerVideo.destroy();
+        let elem = document.getElementById('bigvideo');
+        let elem2 = document.getElementsByClassName('closeBigVideo')[0];
+        elem.remove();
+        elem2.remove();
     }
     streamDestroyed(stream) {
         this.session.signal({
