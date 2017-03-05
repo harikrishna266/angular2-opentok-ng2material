@@ -35,7 +35,7 @@ export class TrainervideoComponent implements OnInit {
     }
     tryingToConnect(e) {
         this.session.on('streamCreated',(e) => this.streamCreated(e));
-         this.session.on('streamDestroyed',(e) => this.streamDestroyed(e));
+         this.session.on('streamDestroyed',(e) => this.streamDestroyed(e.stream));
     }
     streamCreated(stream) {
         if(stream.stream.id == this.streamid) {
@@ -50,7 +50,7 @@ export class TrainervideoComponent implements OnInit {
                 this.session.subscribe(stream.stream, 'smallvideo', subscriberProperties);
        }
     }
-    streamDestroyed() {
+    streamDestroyed(stream) {
         this.session.signal({
             data:"removed",
             to: stream.connection,

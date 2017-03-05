@@ -25,7 +25,7 @@ export class HomeComponent {
     ngAfterViewInit() {
         
        this.initSession();
-       this.ngOnDestroy();
+       //this.ngOnDestroy();
        //this.CanActivate();
     }
     CanActivate() {
