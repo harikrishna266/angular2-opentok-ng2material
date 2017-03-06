@@ -1,10 +1,10 @@
 <md-card class="Publish" >
     <md-toolbar class="publishButton">
         <md-input-container>
-            <input mdInput placeholder="Title" [(ngModel)]="title" value="">
+            <input mdInput placeholder="Title" [(ngModel)]="title" maxLength="100" value="">
         </md-input-container>
         <md-input-container>
-          <input mdInput placeholder="description" [(ngModel)]="description" value="">
+          <input mdInput placeholder="description" [(ngModel)]="description" maxLength="200" value="">
         </md-input-container>
         &nbsp;&nbsp;
         <button md-raised-button color="accent" (click)="publisherInit();" [disabled]="!(publishStatus ==1||publishStatus ==3)" >Publish</button> &nbsp;

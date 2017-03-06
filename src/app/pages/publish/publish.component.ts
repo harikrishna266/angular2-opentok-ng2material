@@ -15,9 +15,9 @@ export class PublishComponent {
 
     public description;
     public title;
-    public openTokSessionId:string   = '1_MX40NTc4Mjg2Mn5-MTQ4ODI2NDI0MzM1Mn5iWFJrUjFPVFlpbzVjSm9scnRVbE4yWFN-fg';
-    public tokenId:string            = 'T1==cGFydG5lcl9pZD00NTc4Mjg2MiZzaWc9OTEyNDAwNDkyMzIxODZmNjJjNjZlMmJjNmQ0NGZjNDYxYWY2ZjJmOTpzZXNzaW9uX2lkPTFfTVg0ME5UYzRNamcyTW41LU1UUTRPREkyTkRJME16TTFNbjVpV0ZKclVqRlBWRmxwYnpWalNtOXNjblJWYkU0eVdGTi1mZyZjcmVhdGVfdGltZT0xNDg4MjY0MjcyJm5vbmNlPTAuNjI2ODM2NDgwOTQzMzcyNCZyb2xlPW1vZGVyYXRvciZleHBpcmVfdGltZT0xNDkwODU2Mjcx';
-    public apiKey: string            = '45782862';
+    public openTokSessionId:string   = '2_MX40NTc4Nzc0Mn5-MTQ4ODcyNDY2NjkzNn5UbFlGUFZpR0hQaEhOeTREbXl1cXBZUGx-fg';
+    public tokenId:string            = 'T1==cGFydG5lcl9pZD00NTc4Nzc0MiZzaWc9M2ZlYmE0ZDZiMjE4NTM1MzkzMmEzM2I3YzhiZWQ0YTk4NGJjYzE0NjpzZXNzaW9uX2lkPTJfTVg0ME5UYzROemMwTW41LU1UUTRPRGN5TkRZMk5qa3pObjVVYkZsR1VGWnBSMGhRYUVoT2VUUkViWGwxY1hCWlVHeC1mZyZjcmVhdGVfdGltZT0xNDg4NzI0NzQxJm5vbmNlPTAuMDQzOTgzNDc4Nzk3MzcxNDEmcm9sZT1tb2RlcmF0b3ImZXhwaXJlX3RpbWU9MTQ5MTMxNjczOQ==';
+    public apiKey: string            = '45787742';
     public publisher:any;
     public publisherProperties = {width: 800, height:500, name: ''};
     public session:any;
@@ -27,7 +27,7 @@ export class PublishComponent {
 
     ngAfterViewInit() {
         this.bootstrapPublisher();
-        //this.CanActivate();
+        this.CanActivate();
     }
     CanActivate() {
         this.http.get('https://www.fitnesspax.com/api/v1/getwebtoken',{ withCredentials: true })
@@ -35,8 +35,6 @@ export class PublishComponent {
             .subscribe((res:any) => {
                 if(res.status == 'No session existed') {
                     window.location.href="https://www.fitnesspax.com/login";
-                }else {
-                    this.getUserData(res.token);
                 }
             })
     }
@@ -44,11 +42,6 @@ export class PublishComponent {
         this.http.get('https://www.fitnesspax.com/api/v1/logged/userweb?token='+token,{ withCredentials: true })
             .map(res => res.json())
             .subscribe((res:any) => {
-                if(res.user.role == "User") {
-                    this.router.navigate(['/home']);
-                }else {
-                    this.router.navigate(['/publish']);
-                }
             })
     }
     
@@ -77,22 +70,33 @@ export class PublishComponent {
                                               width: '300px',
                                         });
         dialogRef.afterClosed().subscribe(result => {
-            console.log(result);
             if(result == 1)
-            this.publisher = OT.initPublisher('myPublisherDiv', this.publisherProperties, (e) => this.publish());  
+            this.publisher = OT.initPublisher('myPublisherDiv', this.publisherProperties, (e) => this.publish(e));  
         });
         
         //
     }
-    publish() {
+    publish(e) {
         this.session.publish(this.publisher, (e) => this.sessionTryingToPublish(e));
          this.session.on("signal", (event)=> { 
-             if(event.data == 'joined') this.count++; else this.count--;
+             if(event.data == 'joined') {
+                     this.count++;
+                 } else{
+                   this.count--;  
+                   if(this.count<0) this.count =0;
+                 } 
          })
         this.publishStatus = 1   
     }
     
     sessionTryingToPublish(e) {
+        console.log(this.publisher.streamId)
+        
+        this.http.post('https://www.fitnesspax.com/api/v1/addstream',{streamid:this.publisher.streamId},{ withCredentials: true })
+            .map(res => res.json())
+            .subscribe((res:any) => {
+                console.log(res);
+            })
         this.publishStatus = 2;
     }
     stopPublishing(paused=true) {

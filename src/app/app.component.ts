@@ -8,8 +8,9 @@ import { CanActivate }    from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+    public enablePublish:boolean = false;
     constructor(public http:Http, public router: Router) {
-      // this.CanActivate();
+      this.CanActivate();
     }
     opensite() {
          window.location.href="https://www.fitnesspax.com/login";
@@ -21,7 +22,7 @@ export class AppComponent {
                 if(res.status == 'No session existed') {
                     window.location.href="https://www.fitnesspax.com";
                 }else {
-              //x      this.getUserData(res.token);
+                   this.getUserData(res.token);
                 }
             })
     }
@@ -29,10 +30,8 @@ export class AppComponent {
         this.http.get('https://www.fitnesspax.com/api/v1/logged/userweb?token='+token,{ withCredentials: true })
             .map(res => res.json())
             .subscribe((res:any) => {
-                if(res.user.role == "Trainer") {
-                    this.router.navigate(['/publish']);
-                }else {
-                    this.router.navigate(['/home']);
+                if(res.user.role != "User") {
+                  this.enablePublish  = true;
                 }
             })
     }
