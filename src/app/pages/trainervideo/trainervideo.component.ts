@@ -24,7 +24,7 @@ export class TrainervideoComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params:any) => {
             this.streamid = params.id;
-              //this.CanActivate();      
+            this.CanActivate();      
         })
     }
     ngAfterViewInit() {
@@ -47,8 +47,6 @@ export class TrainervideoComponent implements OnInit {
             .subscribe((res:any) => {
                 if(res.status == 'No session existed') {
                     window.location.href="https://www.fitnesspax.com/login";
-                }else {
-                   // this.getUserData(res.token);
                 }
             })
     }

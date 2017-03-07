@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,trigger, transition, style, animate, state } from '@angular/core';
 import {OpentokService} from '../../providers/providers';
 import { Router } from '@angular/router';
 import { Http, Response }          from '@angular/http';
@@ -9,7 +9,16 @@ declare const OT;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      state('in', style({ opacity: 1 })),
+      transition(':enter', [
+        style({ opacity: 0}),
+        animate('1500ms ease-out')
+      ])
+    ])
+  ]
 })
 export class HomeComponent {
 

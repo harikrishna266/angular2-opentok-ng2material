@@ -2,19 +2,18 @@
     <div id="layout"></div>
 </div>
 <div id="bigvideoholder">
-    <!-- <div id="bigvideoholder">
-    </div> -->
 </div>
-<md-grid-list id="bigvideoholder" cols="3" rowHeight="240">
-    <md-grid-tile class="streamholder"  *ngFor="let item of streamArray">
-        <div [id]="item.stream.id"><p>setit</p></div>
-        <md-grid-tile-footer style="background: none">
-          <h3 md-line>ssssss</h3>
+<md-grid-list id="bigvideoholder" cols="3" rowHeight="300">
+    <md-grid-tile class="streamholder"  *ngFor="let item of streamArray" >
+
+        <div [id]="item.stream.id" style="height:240px"></div>
+        <md-grid-tile-footer class="footernar">
+            <div>sdsd</div>
+          <h3 md-line >ssssss</h3>
           <span md-line>ssssss</span>
-          <button md-icon-button (click)="bigScreen(item.stream)">
+          <button md-icon-button color="accent" (click)="bigScreen(item.stream)">
             <i class="material-icons">launch</i>
           </button>
         </md-grid-tile-footer>
-
     </md-grid-tile>
 </md-grid-list>

@@ -1,0 +1,20 @@
+.mat-grid-tile {
+    border: 1px solid #cfcfcf;
+    /*border-radius: 6px;*/
+}
+.avtar{
+    width: 30px;
+    height: 30px;
+    float: right;
+}
+.footernar {
+    display:flex;
+    flex-direction: row;
+}
+/*.footernar: {
+    background: red;
+}*/
+.footernar .mat-grid-tile .mat-grid-list-text {
+    flex-direction: row;
+    width: 60% !important;
+}

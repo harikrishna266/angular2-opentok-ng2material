@@ -30,3 +30,23 @@
 .app-toolbar-filler {
   flex: 1 1 auto;
 }
+.conetent{
+    /*width:100%;
+    height:30px;
+    background:red;
+    float: left;*/
+}
+.mat-grid-tile {
+ /*   border: 1px solid #cfcfcf;*/
+    /*border-radius: 6px;*/
+}
+.mat-grid-tile .mat-figure {
+        align-items: baseline  !important;        
+}
+.mat-grid-tile .mat-grid-tile-footer, .mat-grid-tile .mat-grid-tile-header {
+    background: rgb(255, 255, 255) !important; ;
+    color: #31C1A6;
+}
+.mat-grid-list-text {
+    color: #31C1A6 !important;
+}
