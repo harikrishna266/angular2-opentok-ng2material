@@ -27,6 +27,7 @@ export class PublisherService {
          if(document.getElementById('myPublisherDivd') == null) 
             document.getElementById('publisherHolder').innerHTML = '<div id="myPublisherDiv"></div>';
         this.publisher = OT.initPublisher('myPublisherDiv', this.publisherProperties, (e) => {this.publishStatus = 1});
+        this.publisherInit();
     }
     publisherInit() {
         this.session.publish(this.publisher, (e) => this.sessionTryingToPublish(e));
